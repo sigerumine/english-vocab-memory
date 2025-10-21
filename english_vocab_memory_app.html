@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文單字記憶練習</title>
+<style>
+  body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Microsoft JhengHei', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  h1 { color: #00e0ff; }
+  .card {
+    background-color: #222;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 10px #00e0ff;
+    width: 300px;
+  }
+  button {
+    background-color: #00e0ff;
+    border: none;
+    color: #111;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #00bcd4;
+  }
+  #word {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  #meaning {
+    font-size: 1.2em;
+    color: #ccc;
+  }
+</style>
+</head>
+<body>
+  <h1>英文單字記憶訓練</h1>
+  <div class="card">
+    <div id="word">apple</div>
+    <div id="meaning">蘋果 🍎</div>
+    <button onclick="showMeaning()">顯示中文意思</button>
+    <button onclick="nextWord()">下一個單字</button>
+  </div>
+
+<script>
+const words = [
+  { word: 'apple', meaning: '蘋果 🍎' },
+  { word: 'courage', meaning: '勇氣 💪' },
+  { word: 'journey', meaning: '旅程 ✈️' },
+  { word: 'wisdom', meaning: '智慧 🧠' },
+  { word: 'harmony', meaning: '和諧 🎶' },
+  { word: 'gratitude', meaning: '感恩 🙏' },
+  { word: 'hope', meaning: '希望 🌈' }
+];
+
+let current = 0;
+const wordEl = document.getElementById('word');
+const meaningEl = document.getElementById('meaning');
+meaningEl.style.visibility = 'hidden';
+
+function showMeaning() {
+  meaningEl.style.visibility = 'visible';
+}
+
+function nextWord() {
+  current = (current + 1) % words.length;
+  wordEl.textContent = words[current].word;
+  meaningEl.textContent = words[current].meaning;
+  meaningEl.style.visibility = 'hidden';
+}
+</script>
+</body>
+</html>
